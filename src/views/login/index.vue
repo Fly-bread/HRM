@@ -56,8 +56,6 @@
 import { validphone } from '@/utils/validate'
 // 引入Vuex辅助函数
 import { mapActions } from 'vuex'
-import {signIn} from '@/utils/cognito'
-import {handler} from '@/utils/jwt'
 import { Message } from 'element-ui'
 
 import {testonline} from '@/api/user'
