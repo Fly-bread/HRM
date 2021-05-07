@@ -1,6 +1,15 @@
 // 引入的是 utils下面的request.js 文件 本质上市一个axios
 import request from '@/utils/request'
 
+//test的尝试
+export function testonline() {
+    console.log('666')
+    return request({
+        url: '/testonline',
+        method: 'get'
+    })
+}
+
 // 把所有的请求封装成一个个函数
 // 登录接口
 export function login(data) {

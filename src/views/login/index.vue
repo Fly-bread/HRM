@@ -56,7 +56,11 @@
 import { validphone } from '@/utils/validate'
 // 引入Vuex辅助函数
 import { mapActions } from 'vuex'
+import {signIn} from '@/utils/cognito'
+import {handler} from '@/utils/jwt'
 import { Message } from 'element-ui'
+
+import {testonline} from '@/api/user'
 //import { getEmployeesList } from '@/api/employees'
 // import axios from 'axios'
 export default {
@@ -104,7 +108,13 @@ export default {
   },
 
   created(){
-    console.log('4444444444')
+    // signIn('bigpig', 'Wangcong123!').then((data) => {
+    //   let mytoken =  data.signInUserSession.accessToken.jwtToken
+    //   // var mytoken = 'eyJraWQiOiJpZXNxK2V0VVg4c0hPXC9wb3pSajRVeU9lejFJRjFkMFd1dVNzcnRlb2cwQT0iLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJmMTg2NTYyZC1hY2Q0LTQ4ODItODQ3Ni0wNmVjZWQwMzI2ZGMiLCJjb2duaXRvOmdyb3VwcyI6WyJ0ZXN0R3JvdXAiXSwiZXZlbnRfaWQiOiI0YzJmYzNkNy04ZjBiLTQ5MGEtOTBmYy1kMGU5MWQyZjI5MjYiLCJ0b2tlbl91c2UiOiJhY2Nlc3MiLCJzY29wZSI6ImF3cy5jb2duaXRvLnNpZ25pbi51c2VyLmFkbWluIiwiYXV0aF90aW1lIjoxNjIwMjk1MTU5LCJpc3MiOiJodHRwczpcL1wvY29nbml0by1pZHAuYXAtc291dGhlYXN0LTIuYW1hem9uYXdzLmNvbVwvYXAtc291dGhlYXN0LTJfYzdRZDlueXpBIiwiZXhwIjoxNjIwMjk4NzU5LCJpYXQiOjE2MjAyOTUxNTksImp0aSI6ImY0ZjA5NDNkLWI3MWItNDE0MS1hZmIwLTg4ZTg1OGE1MDNiNSIsImNsaWVudF9pZCI6IjIxbGQ0N3NlMjMwbjB2aThqZG1xc25vMTFiIiwidXNlcm5hbWUiOiJiaWdwaWcifQ.QclyD_hfR_SUpwENAlCdD91patPgBCfwP060mGOTYXjA4zV_rzre-yUlY3c-3w_S3jWQgUzBuQ20R3L7Ot9vAn9PSvhTSwb0QuI5dPLiUe-JWQBWohdsKPPKFxzUGdNufhSjgka3cHLuT7TZyav4eKdVG4wwgSY1ejYYSjYnzpGwAX-6FfQ0anwftigFaLWlZvQu_9NCE6fZ4wRlfXvG9t9P9xX8XUemHjdCMX96lSS-iGmrNpTEh0A6iWUCkeJWEfGG7kFcayj3alhOgt3T-liYDGU1e3fBBJ_tyHqeFKDRN1FipxHmz-4YGWSp8iu-gISfVh3dZeiE1C-V-sAuYQ';
+    //   handler({ 'token': mytoken }).then(function(claim) {
+    //       console.log(claim);
+    //   });   
+    // })       
   },
   methods: {
     // 引入module的子模块
@@ -131,27 +141,31 @@ export default {
             )      
     },
     handleLogin() {
+      console.log('9999')
       this.$refs.loginForm.validate(async valid => {
-        if (valid) {
-          try {
-            this.loading = true   
-            await this['user/login'](this.loginForm)   //this.loginForm 
-            
-            //let result = await getEmployeesList()
-            this.loading = false
-            this.$router.push('/')
-          } catch (error) {
-            console.log(error)
-            // this.$router.push({
-            //     name:'relaxDetails',
-            //      params:{
-            //         id:row.id,
-            //         username:row.username
-            //     }
-            // })           
-            this.loading = false
-          }
-        }
+        console.log('888')
+        let data = await testonline()
+        console.log('777')
+        console.log(data)
+        // if (valid) {
+        //   try {
+        //     this.loading = true   
+        //     await this['user/login'](this.loginForm)   //this.loginForm 
+        //     //let result = await getEmployeesList()
+        //     this.loading = false
+        //     this.$router.push('/')
+        //   } catch (error) {
+        //     console.log(error)
+        //     // this.$router.push({
+        //     //     name:'relaxDetails',
+        //     //      params:{
+        //     //         id:row.id,
+        //     //         username:row.username
+        //     //     }
+        //     // })           
+        //     this.loading = false
+        //   }
+        // }
       })
     }
   }
