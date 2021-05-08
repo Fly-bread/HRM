@@ -6,7 +6,7 @@ export function testonline() {
     console.log('666')
     return request({
         url: '/testonline',
-        method: 'get'
+        method: 'post'
     })
 }
 
