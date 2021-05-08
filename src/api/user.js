@@ -5,7 +5,7 @@ import request from '@/utils/request'
 export function testonline() {
     console.log('66')
     return request({
-        url: '/testonline222',
+        url: '/testonline',
         method: 'post'
     })
 }
