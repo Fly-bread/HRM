@@ -3,7 +3,7 @@ import request from '@/utils/request'
 
 //test的尝试
 export function testonline() {
-    console.log('666')
+    console.log('66')
     return request({
         url: '/testonline222',
         method: 'post'
