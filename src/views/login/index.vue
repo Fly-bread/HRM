@@ -139,31 +139,28 @@ export default {
             )      
     },
     handleLogin() {
-      console.log('9999')
       this.$refs.loginForm.validate(async valid => {
-        console.log('888')
-        let data = await testonline()
-        console.log('777')
-        console.log(data)
-        // if (valid) {
-        //   try {
-        //     this.loading = true   
-        //     await this['user/login'](this.loginForm)   //this.loginForm 
-        //     //let result = await getEmployeesList()
-        //     this.loading = false
-        //     this.$router.push('/')
-        //   } catch (error) {
-        //     console.log(error)
-        //     // this.$router.push({
-        //     //     name:'relaxDetails',
-        //     //      params:{
-        //     //         id:row.id,
-        //     //         username:row.username
-        //     //     }
-        //     // })           
-        //     this.loading = false
-        //   }
-        // }
+        // let data = await testonline()
+        // console.log(data)
+        if (valid) {
+          try {
+            this.loading = true   
+            await this['user/login'](this.loginForm)   //this.loginForm 
+            //let result = await getEmployeesList()
+            this.loading = false
+            this.$router.push('/')
+          } catch (error) {
+            console.log(error)
+            // this.$router.push({
+            //     name:'relaxDetails',
+            //      params:{
+            //         id:row.id,
+            //         username:row.username
+            //     }
+            // })           
+            this.loading = false
+          }
+        }
       })
     }
   }
